@@ -1,0 +1,6 @@
+- Project dependencies:
+    - body-parser
+    - cors
+    - express
+    - mongoose
+    - nodemon
