@@ -2,11 +2,9 @@ import { Button, Paper, TextField } from '@material-ui/core';
 import React from 'react'
 import useStyles from "./styles"
 import FileBase from "react-file-base64";
-import FormHelper from '../../helpers/FormHelper';
 
-export default function Form() {
+export default function Form({ postData, clearForm, setPostData, handleSubmit }) {
   const styles = useStyles();
-  const {postData, setPostData, clearForm, handleSubmit} = FormHelper();
   return (
     <Paper className={styles.paper}>
       <form autoComplete='off' 

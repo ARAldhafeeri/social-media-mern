@@ -5,14 +5,11 @@ import moment from "moment";
 import { GiBoatHorizon } from "react-icons/gi";
 import { BsHandThumbsUp } from "react-icons/bs"
 import { AiFillDelete } from "react-icons/ai";
-import PostHelper from '../../../helpers/PostHelper';
-import FormHelper from '../../../helpers/FormHelper';
 
-export default function Post( { post }) {
+
+
+export default function Post( { passDataToForm, post, _deletePost, _findPost, _updatePost}) {
   const styles = useStyles();
-  const {_deletePost, _findPost, _updatePost} = PostHelper();
-  const { passDataToForm } = FormHelper();
-
   return (
     <Card className={styles.card}>
       <CardMedia className={styles.media} image={post.selectedFile} title={post.title} />
@@ -27,7 +24,7 @@ export default function Post( { post }) {
       </div>
         <div className={styles.details}>
         <Typography variant="body2" color="textSecondary">
-          {post.tags.map((tag) => {return `# ${tag} `})}
+          {post?.tags?.map((tag) => {return `# ${tag} `})}
         </Typography>
       </div>
       <CardContent>

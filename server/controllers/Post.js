@@ -24,10 +24,10 @@ const createPost = async (req, res) => {
 
 const updatePost = async (req, res) => {
     const id = req.params.id
-    const data = req.body[0]
+    const data = req.body
     if (!isValidObjectId(id)) return res.status(404).send('No post with that id');
     await PostModel.updateOne({_id: id, data }, data).then((response) => {
-        res.status(202).json(response)
+        res.status(202).json({...response, data: data, _id: id})
     }).catch((err) => 
         res.status(400).json(err)
     );
@@ -38,7 +38,7 @@ const deletePost = async (req, res) => {
     const id = req.params.id
     if (!isValidObjectId(id)) return res.status(404).send('No post with that id');
     await PostModel.deleteOne({_id: id }).then((response) => {
-        res.status(201).json(response)
+        res.status(201).json({...response, _id: id})
     }).catch((err) => 
         res.status(400).json(err)
     );

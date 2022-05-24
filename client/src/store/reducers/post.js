@@ -4,15 +4,14 @@ export default (state = [], action) => {
         case actionTypes.FETCH_ALL_POSTS:
             return {...state, post: action.payload};
         case actionTypes.CREATE:
-            console.log(state, action)
-            return {...state,  ...action.payload};
+            return {post: [...state.post, action.payload]}
         case actionTypes.DELETE:
-            return {...state,  ...action.payload};
+            return {post: state.post.filter((post) => post._id !== action.payload._id ? post : null)}
         case actionTypes.UPDATE:
-           
-            return [...state, state.map((post) => post._id == action.payload._id ? action.payload : post)]
+            console.log(state, action.payload)
+            return  {post: state.post.map((post) => post._id === action.payload._id ? action.payload.data : post)}
         case actionTypes.FETCH_SINGLE:
-            return {...state, ...action.payload};
+            return {post: state.post.map((post) => post._id === action.payload._id ? action.payload : post)}
         default:
            return  state;
     }
