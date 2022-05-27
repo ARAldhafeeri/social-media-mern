@@ -1,24 +1,23 @@
 import React from "react";
-import {Container, AppBar, Typography, Grow} from "@material-ui/core";
 import './App.css';
-import logo from "./images/logo.jpg"
-import useStyles from "./styles"
-import FormPostContainer from "./containers/FormPostContainer";
+import Home from "./components/Home/Home";
+import NavBar from "./components/NavBar/NavBar";
+import {Container} from "@material-ui/core";
+import { BrowserRouter, Switch, Route} from "react-router-dom"
+import Auth from "./components/Auth/Auth";
 
 
 function App() {
-  const styles = useStyles();
-
   return (
-    <Container maxidth="lg">
-      <AppBar className={styles.appBar} position="static" color="inherit">
-        <Typography variant="h2" align="center">Socio</Typography>
-        <img className={styles.image} src={logo} alt="socio" height={60} width={60} />
-      </AppBar>
-      <Grow in >
-        <FormPostContainer styles={styles} />
-      </Grow>
-    </Container>
+    <BrowserRouter>
+      <Container maxidth="lg">
+        <NavBar />
+        <Switch>
+          <Route path="/" exact component={Home} />
+          <Route path="/auth"  component={Auth} />
+        </Switch>
+      </Container>
+    </BrowserRouter>
   );
 }
 
