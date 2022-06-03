@@ -36,6 +36,7 @@ export default function Auth() {
                     onFailure={responseGoogleFailure}
                     cookiePolicy="single_host_origin"
                     isSignedIn={true}
+                    uxMode="page"
                     render={(renderProps) => (
                         <Button 
                             className={styles.googleButton} 
